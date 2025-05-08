@@ -4,6 +4,7 @@ import LandingPage from "./pages/LandingPage.jsx";
 import RegisterPage from "./pages/RegisterPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
+import ServicesPage from "./pages/ServicesPage.jsx";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/services" element={<ServicesPage />} />
       </Routes>
     </div>
   );
