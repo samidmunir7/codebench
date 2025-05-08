@@ -185,6 +185,7 @@ import { FaRocket, FaPuzzlePiece, FaUsers, FaLightbulb } from "react-icons/fa";
 import zephorin_about from "../assets/zephorin_about.png";
 import zephorin_founder from "../assets/zephorin_founder.png";
 import FooterSecondary from "../components/FooterSecondary.jsx";
+import PageWrapper from "../components/PageWrapper.jsx";
 
 const fadeIn = (delay = 0.2) => ({
   initial: { opacity: 0, y: 20 },
@@ -202,7 +203,7 @@ const AboutPage = () => {
   });
 
   return (
-    <>
+    <PageWrapper>
       {/* Scroll Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 z-[999] bg-gradient-to-r from-[#30E3CA] to-[#7A60FF] origin-left"
@@ -377,7 +378,7 @@ const AboutPage = () => {
         </section>
         <FooterSecondary />
       </div>
-    </>
+    </PageWrapper>
   );
 };
 

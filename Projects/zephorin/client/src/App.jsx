@@ -1,5 +1,5 @@
 import Navbar from "./components/Navbar.jsx";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import LandingPage from "./pages/LandingPage.jsx";
 import RegisterPage from "./pages/RegisterPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
@@ -8,12 +8,14 @@ import ServicesPage from "./pages/ServicesPage.jsx";
 import PricingPage from "./pages/PricingPage.jsx";
 import DocsPage from "./pages/DocsPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
+import { AnimatePresence } from "framer-motion";
 
 const App = () => {
+  const location = useLocation();
   return (
-    <div>
+    <AnimatePresence mode="wait">
       <Navbar />
-      <Routes>
+      <Routes location={location} key={location.pathname}>
         <Route path="/" element={<LandingPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -23,7 +25,7 @@ const App = () => {
         <Route path="/docs" element={<DocsPage />} />
         <Route path="/contact" element={<ContactPage />} />
       </Routes>
-    </div>
+    </AnimatePresence>
   );
 };
 

@@ -348,6 +348,7 @@
 import { motion, useScroll, useSpring } from "framer-motion";
 import zephorin_rocket from "../assets/zephorin_rocket.png";
 import Footer from "../components/Footer.jsx";
+import PageWrapper from "../components/PageWrapper.jsx";
 
 const LandingPage = () => {
   const { scrollYProgress } = useScroll();
@@ -357,7 +358,7 @@ const LandingPage = () => {
     restDelta: 0.001,
   });
   return (
-    <>
+    <PageWrapper>
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 z-[999] bg-gradient-to-r from-[#30E3CA] to-[#7A60FF] origin-left"
         style={{ scaleX }}
@@ -669,7 +670,7 @@ const LandingPage = () => {
         </section>
         <Footer />
       </div>
-    </>
+    </PageWrapper>
   );
 };
 

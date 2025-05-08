@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import PageWrapper from "../components/PageWrapper.jsx";
 
 const fadeIn = (delay = 0.2) => ({
   initial: { opacity: 0, y: 20 },
@@ -41,71 +42,75 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#1D2B53] flex items-center justify-center px-4">
-      <motion.div
-        {...fadeIn(0)}
-        className="w-full max-w-md bg-[#121212] p-8 rounded-xl shadow-lg"
-      >
-        <motion.h2
-          {...fadeIn(0.1)}
-          className="text-3xl font-bold text-center text-[#30E3CA] mb-6"
+    <PageWrapper>
+      <div className="min-h-screen bg-[#1D2B53] flex items-center justify-center px-4">
+        <motion.div
+          {...fadeIn(0)}
+          className="w-full max-w-md bg-[#121212] p-8 rounded-xl shadow-lg"
         >
-          Sign In
-        </motion.h2>
-
-        <form onSubmit={handleSubmit} className="space-y-5">
-          <motion.div {...fadeIn(0.2)}>
-            <label className="block text-sm text-gray-300 mb-1">Email</label>
-            <input
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full bg-[#2E323C] text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#30E3CA]"
-            />
-            {errors.email && (
-              <p className="text-red-500 text-xs mt-1">{errors.email}</p>
-            )}
-          </motion.div>
-
-          <motion.div {...fadeIn(0.3)}>
-            <label className="block text-sm text-gray-300 mb-1">Password</label>
-            <input
-              name="password"
-              type="password"
-              value={formData.password}
-              onChange={handleChange}
-              className="w-full bg-[#2E323C] text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#30E3CA]"
-            />
-            {errors.password && (
-              <p className="text-red-500 text-xs mt-1">{errors.password}</p>
-            )}
-          </motion.div>
-
-          <motion.button
-            type="submit"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            disabled={submitting}
-            className={`w-full bg-[#30E3CA] hover:bg-[#7A60FF] text-black font-semibold py-2 rounded transition ${
-              submitting && "opacity-50 cursor-not-allowed"
-            }`}
+          <motion.h2
+            {...fadeIn(0.1)}
+            className="text-3xl font-bold text-center text-[#30E3CA] mb-6"
           >
-            {submitting ? "Logging in..." : "Login"}
-          </motion.button>
-        </form>
+            Sign In
+          </motion.h2>
 
-        <motion.p
-          {...fadeIn(0.4)}
-          className="text-sm text-gray-400 text-center mt-6"
-        >
-          Don’t have an account?{" "}
-          <Link to="/register" className="text-[#30E3CA] hover:underline">
-            Register here
-          </Link>
-        </motion.p>
-      </motion.div>
-    </div>
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <motion.div {...fadeIn(0.2)}>
+              <label className="block text-sm text-gray-300 mb-1">Email</label>
+              <input
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full bg-[#2E323C] text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#30E3CA]"
+              />
+              {errors.email && (
+                <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+              )}
+            </motion.div>
+
+            <motion.div {...fadeIn(0.3)}>
+              <label className="block text-sm text-gray-300 mb-1">
+                Password
+              </label>
+              <input
+                name="password"
+                type="password"
+                value={formData.password}
+                onChange={handleChange}
+                className="w-full bg-[#2E323C] text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#30E3CA]"
+              />
+              {errors.password && (
+                <p className="text-red-500 text-xs mt-1">{errors.password}</p>
+              )}
+            </motion.div>
+
+            <motion.button
+              type="submit"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              disabled={submitting}
+              className={`w-full bg-[#30E3CA] hover:bg-[#7A60FF] text-black font-semibold py-2 rounded transition ${
+                submitting && "opacity-50 cursor-not-allowed"
+              }`}
+            >
+              {submitting ? "Logging in..." : "Login"}
+            </motion.button>
+          </form>
+
+          <motion.p
+            {...fadeIn(0.4)}
+            className="text-sm text-gray-400 text-center mt-6"
+          >
+            Don’t have an account?{" "}
+            <Link to="/register" className="text-[#30E3CA] hover:underline">
+              Register here
+            </Link>
+          </motion.p>
+        </motion.div>
+      </div>
+    </PageWrapper>
   );
 };
 
