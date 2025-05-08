@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
+import { connectDB } from "./database/mongo.db.js";
 
 dotenv.config();
 
@@ -17,6 +18,9 @@ app.get("/", (req, res) => {
   res.send("Hello, Zephorin SERVER!");
 });
 
-app.listen(PORT, () => {
-  console.log(`\nServer is running on port http://localhost:${PORT}`);
+app.listen(PORT, async () => {
+  console.log(`\nZephorin SERVER is running on port http://localhost:${PORT}`);
+  await connectDB();
+  console.log("--> Server: RUNNING...");
+  console.log("--> Database: CONNECTED...");
 });
