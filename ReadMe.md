@@ -1,9 +1,16 @@
 Sami Munir | samidmunir7@gmail.com | Rutgers University
 
-# codebench
+# Codebench
 
 ## Learning
 
 ## Projects
 
 ### zephorin
+
+- MongoDB
+- Express
+- ReactJS
+  - Typescript
+  - TailwindCSS
+- Node
