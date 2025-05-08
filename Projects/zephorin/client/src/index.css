@@ -4,4 +4,15 @@
 * {
   font-family: "Space Grotesk", sans-serif;
   font-optical-sizing: auto;
+  scrollbar-width: none;
+}
+
+/* Hide scrollbars across all browsers */
+body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
 }

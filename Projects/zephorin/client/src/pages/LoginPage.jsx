@@ -8,14 +8,8 @@ const fadeIn = (delay = 0.2) => ({
   transition: { duration: 0.6, delay },
 });
 
-const RegisterPage = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
-
+const LoginPage = () => {
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
 
@@ -26,11 +20,8 @@ const RegisterPage = () => {
 
   const validate = () => {
     const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required";
     if (!formData.email.trim()) newErrors.email = "Email is required";
-    if (!formData.password) newErrors.password = "Password is required";
-    if (formData.password !== formData.confirmPassword)
-      newErrors.confirmPassword = "Passwords do not match";
+    if (!formData.password.trim()) newErrors.password = "Password is required";
     return newErrors;
   };
 
@@ -45,7 +36,7 @@ const RegisterPage = () => {
     setSubmitting(true);
     setTimeout(() => {
       setSubmitting(false);
-      console.log("Submitted:", formData);
+      console.log("Logged in:", formData);
     }, 1500);
   };
 
@@ -59,27 +50,11 @@ const RegisterPage = () => {
           {...fadeIn(0.1)}
           className="text-3xl font-bold text-center text-[#30E3CA] mb-6"
         >
-          Create an Account
+          Sign In
         </motion.h2>
 
         <form onSubmit={handleSubmit} className="space-y-5">
-          {/* Name */}
           <motion.div {...fadeIn(0.2)}>
-            <label className="block text-sm text-gray-300 mb-1">Name</label>
-            <input
-              name="name"
-              type="text"
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full bg-[#2E323C] text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#30E3CA]"
-            />
-            {errors.name && (
-              <p className="text-red-500 text-xs mt-1">{errors.name}</p>
-            )}
-          </motion.div>
-
-          {/* Email */}
-          <motion.div {...fadeIn(0.3)}>
             <label className="block text-sm text-gray-300 mb-1">Email</label>
             <input
               name="email"
@@ -93,8 +68,7 @@ const RegisterPage = () => {
             )}
           </motion.div>
 
-          {/* Password */}
-          <motion.div {...fadeIn(0.4)}>
+          <motion.div {...fadeIn(0.3)}>
             <label className="block text-sm text-gray-300 mb-1">Password</label>
             <input
               name="password"
@@ -108,26 +82,6 @@ const RegisterPage = () => {
             )}
           </motion.div>
 
-          {/* Confirm Password */}
-          <motion.div {...fadeIn(0.5)}>
-            <label className="block text-sm text-gray-300 mb-1">
-              Confirm Password
-            </label>
-            <input
-              name="confirmPassword"
-              type="password"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              className="w-full bg-[#2E323C] text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#30E3CA]"
-            />
-            {errors.confirmPassword && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.confirmPassword}
-              </p>
-            )}
-          </motion.div>
-
-          {/* Submit */}
           <motion.button
             type="submit"
             whileHover={{ scale: 1.03 }}
@@ -137,17 +91,17 @@ const RegisterPage = () => {
               submitting && "opacity-50 cursor-not-allowed"
             }`}
           >
-            {submitting ? "Registering..." : "Register"}
+            {submitting ? "Logging in..." : "Login"}
           </motion.button>
         </form>
 
         <motion.p
-          {...fadeIn(0.6)}
+          {...fadeIn(0.4)}
           className="text-sm text-gray-400 text-center mt-6"
         >
-          Already have an account?{" "}
-          <Link to="/login" className="text-[#30E3CA] hover:underline">
-            Login here
+          Don’t have an account?{" "}
+          <Link to="/register" className="text-[#30E3CA] hover:underline">
+            Register here
           </Link>
         </motion.p>
       </motion.div>
@@ -155,4 +109,4 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default LoginPage;
